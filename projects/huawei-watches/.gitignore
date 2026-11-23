@@ -2,6 +2,7 @@
 #   source.mov = release asset "Hu.ad"; aroll.mp4 is rebuilt with `python3 tools/trim.py --render`
 assets/source.mov
 assets/aroll.mp4
+assets/aroll2.mp4
 renders/
 .hyperframes/
 node_modules/

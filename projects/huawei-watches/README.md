@@ -5,7 +5,7 @@ Motion-graphics pass over the presenter's edit `Hu.ad` (release `cc1212` in `azc
 ## Rebuild
 
 1. Download the release asset `Hu.ad` to `assets/source.mov`.
-2. `python3 tools/trim.py --render` → `assets/aroll.mp4` (24 long pauses tightened to ~0.22 s, 3.8 s saved; the breath before «أحيانًا أحلى طريقة…» is kept).
+2. `python3 tools/trim.py --render` → `assets/aroll.mp4`, then `python3 tools/reopen.py` → `assets/aroll2.mp4` (opening re-cut: each of the first three shots carries its own line; flat-lay and gift box slowed with motion interpolation) (24 long pauses tightened to ~0.22 s, 3.8 s saved; the breath before «أحيانًا أحلى طريقة…» is kept).
 3. `npx hyperframes preview` to edit, `npx hyperframes render -o renders/huawei-ad.mp4` to export.
 
 ## Layout
