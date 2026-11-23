@@ -1,6 +1,6 @@
 # HUAWEI Watches — هدية لكل جيل (vertical ad, 1080×1920, 88.6 s)
 
-Motion-graphics pass over the presenter's edit `Hu.ad` (release `cc1212` in `azcm1/cc1212-footage.`).
+Motion-graphics pass over the presenter's edit `Hu.ad` — the voice and the cut are kept exactly as delivered (release `cc1212` in `azcm1/cc1212-footage.`).
 
 ## Rebuild
 
@@ -16,3 +16,10 @@ Motion-graphics pass over the presenter's edit `Hu.ad` (release `cc1212` in `azc
   (script aligned to the VO by `tools/align.py` — no ASR model was reachable, so timings come from the VO's pauses anchored to the shot cuts).
 - Copy lives in the HTML; accent colours per watch: Kids blue `#3b7bff`, D3 champagne `#e3c08f`, GT 7 green `#2fcb7b`.
 - No music bed yet; SFX are Pixabay-licensed (see `assets/sfx/CREDITS.md`).
+
+## Current version: original edit, untouched
+
+The client chose to keep the voiceover and the edit as recorded. `assets/full.mp4` is `Hu.ad` with only the
+picture re-encoded for frame-accurate seeking (`ffmpeg -i source.mov -c:v libx264 -crf 16 -g 30 -c:a copy`);
+the audio stream is copied bit-for-bit. `tools/fullcut.py` maps the scenes (authored on the trimmed edit) onto
+the original timing. `tools/trim.py` / `tools/reopen.py` are the earlier, re-timed variants and are no longer used.

@@ -93,7 +93,10 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     const O = 64.9;
-    const t = (g) => Math.max(0, +(g - O).toFixed(3));
+    const KEEP = [[0.0, 7.3], [7.4, 9.4333], [9.7, 18.8333], [19.1, 23.0667], [23.2667, 25.7333], [25.8667, 29.0333], [29.1667, 31.2333], [31.3333, 36.5667], [36.9, 39.0333], [39.1333, 43.8667], [44.1, 46.5667], [46.6667, 50.6333], [50.7333, 54.6667], [54.8333, 56.8], [56.8667, 59.2333], [59.4, 61.2333], [61.3667, 66.0333], [66.1667, 69.9], [70.0667, 72.5333], [72.7, 74.3667], [74.5, 77.6], [77.7333, 79.9], [80.1, 86.5333], [86.6667, 89.4667], [89.6, 92.3667]];
+    const S = (g) => { let acc = 0; for (const [a, b] of KEEP) { if (g <= acc + (b - a) + 1e-9) return a + (g - acc); acc += b - a; } return KEEP[KEEP.length - 1][1]; };
+    const SO = S(O);
+    const t = (g) => Math.max(0, +(S(g) - SO).toFixed(3));
     const inn = (sel, g, from = {}) =>
       tl.fromTo(sel, { opacity: 0, y: 34, scale: 0.9, ...from }, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(g));
     const outt = (sel, g) => {

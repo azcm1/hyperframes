@@ -1,17 +1,19 @@
 # Build compositions/captions.html from assets/transcript.json (script text aligned to the VO).
 import json, html
 P = json.load(open("assets/transcript.json", encoding="utf8"))
-# times in transcript.json are on aroll.mp4; tools/reopen.py moved the voice (aroll2.mp4)
+# times in transcript.json are on the trimmed edit (aroll.mp4); the film now plays the untouched original
+keep = json.load(open("tools/timemap.json"))["keep"]
 def M(t):
-    if t < 2.7: return t
-    if t < 4.49: return t + 2.25
-    if t < 7.27: return t + 3.98
-    return t + 4.05
+    acc = 0.0
+    for a, b in keep:
+        if t <= acc + (b - a) + 1e-9: return a + (t - acc)
+        acc += b - a
+    return keep[-1][1]
 for p in P:
     for w in p["words"]:
         w["s"], w["e"] = round(M(w["s"]), 2), round(M(w["e"]), 2)
 # lines that a big headline / chapter card / quote already writes on screen
-DROP = {0, 1, 2, 3, 4, 5, 6, 7, 8, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 15, 20, 21, 22, 30, 31, 32, 33, 34, 35, 41, 42, 43}
+DROP = {0, 1, 3, 4, 5, 6, 7, 8, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 15, 20, 21, 22, 30, 31, 32, 33, 34, 35, 41, 42, 43}
 groups = []
 for i, p in enumerate(P):
     if i in DROP: continue
