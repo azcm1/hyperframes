@@ -73,7 +73,7 @@
     </div>
     <div class="c-row" style="top: 1570px">
       <div id="d-lvl" class="c-chip" style="font-size: 44px">قياس بمستوى طبي من المعصم</div>
-      <div id="d-small" class="c-chip" style="font-size: 44px; position: absolute">بدون جهاز كبير ✕</div>
+      <div id="d-small" class="c-chip" style="font-size: 44px; position: absolute">بدون جهاز كبير</div>
     </div>
 
     <!-- 100+ indicators -->
@@ -141,16 +141,16 @@
     ["#d-air", "#d-small"].forEach((s) => outt(s, 52.8));
 
     // +100
-    tl.fromTo("#d-100", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(52.8));
+    tl.fromTo("#d-100", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(53.6));
     const c = { v: 0 };
-    tl.to(c, { v: 100, duration: 1.1, ease: "power3.out", onUpdate: () => { document.getElementById("d-count").textContent = Math.round(c.v); } }, t(52.85));
-    tl.to("#d-100", { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, t(53.85));
-    outt("#d-100", 54.6);
+    tl.to(c, { v: 100, duration: 1.1, ease: "power3.out", onUpdate: () => { document.getElementById("d-count").textContent = Math.round(c.v); } }, t(53.65));
+    tl.to("#d-100", { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, t(54.65));
+    outt("#d-100", 55.15);
     outt("#d-scrim", 55.15);
 
     // health app
-    inn("#d-health", 54.75);
-    inn("#d-fam", 57.05);
+    inn("#d-health", 55.65);
+    inn("#d-fam", 57.45);
     ["#d-health", "#d-fam"].forEach((s) => outt(s, 58.85));
 
     // the emotional line

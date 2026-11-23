@@ -13,7 +13,7 @@ for p in P:
     for w in p["words"]:
         w["s"], w["e"] = round(M(w["s"]), 2), round(M(w["e"]), 2)
 # lines that a big headline / chapter card / quote already writes on screen
-DROP = {0, 1, 3, 4, 5, 6, 7, 8, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 15, 20, 21, 22, 30, 31, 32, 33, 34, 35, 41, 42, 43}
+DROP = {0, 1, 2, 3, 4, 5, 6, 7, 8, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 15, 20, 21, 22, 30, 31, 32, 33, 34, 35, 41, 42, 43}
 groups = []
 for i, p in enumerate(P):
     if i in DROP: continue
