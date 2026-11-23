@@ -30,7 +30,8 @@
         inset: 0;
         transform-origin: 50% 46%;
       }
-      #a-roll {
+      #a-roll,
+      #d3-pull {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -63,6 +64,20 @@
             data-duration="88.6"
             data-track-index="0"
             data-has-audio="true"
+          ></video>
+          <!-- the D3 airbag shot pulled forward to 2.8 s so it is on screen when the VO says «تنتفخ»;
+               slowed to 0.743x so its 5 s fill 2.8 -> 9.53 without repeating any frames -->
+          <video
+            id="d3-pull"
+            class="clip"
+            src="assets/aroll.mp4"
+            playsinline
+            muted
+            data-start="2.8"
+            data-duration="6.73"
+            data-media-start="4.53"
+            data-playback-rate="0.743"
+            data-track-index="6"
           ></video>
         </div>
       </div>
@@ -119,8 +134,8 @@
       // Camera: every shot starts at 1.0 and drifts in slowly; each pause-trim join inside a shot
       // jumps the framing (1.0 <-> 1.07) so the cut reads as a deliberate punch-in, not a skip.
       const END = 88.6;
-      const shots = [0, 4.53, 9.53, 15.33, 17.93, 21.47, 27.33, 31.47, 34.57, 36.94, 38.74, 42.23, 55.17, 61.13, 64.9, 71.13, 76.47, 79.8];
-      const joins = [7.3, 9.33, 18.47, 22.43, 24.9, 28.07, 30.13, 35.37, 37.5, 44.7, 48.67, 52.6, 54.57, 56.93, 58.77, 63.43, 67.17, 69.63, 71.3, 74.4, 76.57, 83.0, 85.8];
+      const shots = [0, 2.8, 9.53, 15.33, 17.93, 21.47, 27.33, 31.47, 34.57, 36.94, 38.74, 42.23, 55.17, 61.13, 64.9, 71.13, 76.47, 79.8];
+      const joins = [18.47, 22.43, 24.9, 28.07, 30.13, 35.37, 37.5, 44.7, 48.67, 52.6, 54.57, 56.93, 58.77, 63.43, 67.17, 69.63, 71.3, 74.4, 76.57, 83.0, 85.8];
       const marks = [...shots.map((t) => ({ t, shot: true })), ...joins.map((t) => ({ t, shot: false }))].sort((a, b) => a.t - b.t);
       let zoomed = false;
       marks.forEach((m, i) => {
