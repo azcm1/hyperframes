@@ -1,0 +1,67 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    #root { position: absolute; inset: 0; direction: rtl; font-family: "Tajawal", sans-serif; }
+    .cg { position: absolute; left: 0; right: 0; top: 1420px; text-align: center; opacity: 0; }
+    .cp {
+      display: inline-block; max-width: 800px; padding: 14px 30px 18px; border-radius: 22px;
+      background: rgba(10, 10, 14, 0.62); font-weight: 800; font-size: 50px; line-height: 1.3; color: rgba(255, 255, 255, 0.72);
+    }
+    .cw { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="cg0" class="cg"><span class="cp"><span id="cw0-0" class="cw">وفيها</span> <span id="cw0-1" class="cw">شريحة</span> <span id="cw0-2" class="cw">اتصال</span></span></div>
+    <div id="cg1" class="cg"><span class="cp"><span id="cw1-0" class="cw">ومكالمات</span> <span id="cw1-1" class="cw">فيديو</span> <span id="cw1-2" class="cw">بجودة</span> <span id="cw1-3" class="cw">عالية</span></span></div>
+    <div id="cg2" class="cg"><span class="cp"><span id="cw2-0" class="cw">فتقدر</span> <span id="cw2-1" class="cw">تكلمه</span> <span id="cw2-2" class="cw">وتشوفه</span></span></div>
+    <div id="cg3" class="cg"><span class="cp"><span id="cw3-0" class="cw">وين</span> <span id="cw3-1" class="cw">ما</span> <span id="cw3-2" class="cw">كان</span></span></div>
+    <div id="cg4" class="cg"><span class="cp"><span id="cw4-0" class="cw">وإذا</span> <span id="cw4-1" class="cw">طلع</span> <span id="cw4-2" class="cw">من</span></span></div>
+    <div id="cg5" class="cg"><span class="cp"><span id="cw5-0" class="cw">المنطقة</span> <span id="cw5-1" class="cw">الآمنة</span></span></div>
+    <div id="cg6" class="cg"><span class="cp"><span id="cw6-0" class="cw">يوصلك</span> <span id="cw6-1" class="cw">تنبيه</span></span></div>
+    <div id="cg7" class="cg"><span class="cp"><span id="cw7-0" class="cw">وتقدر</span> <span id="cw7-1" class="cw">تربطها</span> <span id="cw7-2" class="cw">بجوالك</span></span></div>
+    <div id="cg8" class="cg"><span class="cp"><span id="cw8-0" class="cw">بكل</span> <span id="cw8-1" class="cw">سهولة</span></span></div>
+    <div id="cg9" class="cg"><span class="cp"><span id="cw9-0" class="cw">سوا</span> <span id="cw9-1" class="cw">معك</span> <span id="cw9-2" class="cw">iOS</span></span></div>
+    <div id="cg10" class="cg"><span class="cp"><span id="cw10-0" class="cw">أو</span> <span id="cw10-1" class="cw">أندرويد</span></span></div>
+    <div id="cg11" class="cg"><span class="cp"><span id="cw11-0" class="cw">والتطبيق</span> <span id="cw11-1" class="cw">استخدامه</span> <span id="cw11-2" class="cw">سهل</span> <span id="cw11-3" class="cw">وسلس</span></span></div>
+    <div id="cg12" class="cg"><span class="cp"><span id="cw12-0" class="cw">للكبير</span> <span id="cw12-1" class="cw">والصغير</span></span></div>
+    <div id="cg13" class="cg"><span class="cp"><span id="cw13-0" class="cw">تعطيك</span> <span id="cw13-1" class="cw">مؤشر</span> <span id="cw13-2" class="cw">الجاهزية</span> <span id="cw13-3" class="cw">البدنية</span></span></div>
+    <div id="cg14" class="cg"><span class="cp"><span id="cw14-0" class="cw">فتعرف</span> <span id="cw14-1" class="cw">جسمك</span> <span id="cw14-2" class="cw">جاهز</span></span></div>
+    <div id="cg15" class="cg"><span class="cp"><span id="cw15-0" class="cw">أو</span> <span id="cw15-1" class="cw">لا</span></span></div>
+    <div id="cg16" class="cg"><span class="cp"><span id="cw16-0" class="cw">قبل</span> <span id="cw16-1" class="cw">ما</span> <span id="cw16-2" class="cw">تبدأ</span> <span id="cw16-3" class="cw">يومك</span></span></div>
+    <div id="cg17" class="cg"><span class="cp"><span id="cw17-0" class="cw">وفيها</span> <span id="cw17-1" class="cw">تطبيقات</span> <span id="cw17-2" class="cw">كثير</span></span></div>
+    <div id="cg18" class="cg"><span class="cp"><span id="cw18-0" class="cw">وبطاريتها</span> <span id="cw18-1" class="cw">تدوم</span> <span id="cw18-2" class="cw">لأيام</span> <span id="cw18-3" class="cw">عديدة</span></span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // a group fades in, each word lights up white as it is spoken, then a hard kill at the end
+    const G = (sel, s, e, words) => {
+      tl.fromTo(sel, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.14, ease: "power2.out" }, s);
+      words.forEach((w, i) => {
+        tl.fromTo(`${sel} .cw:nth-child(${i + 1})`, { color: "rgba(255,255,255,0.72)", scale: 1 },
+          { color: "#ffffff", scale: 1.06, duration: 0.12, ease: "power2.out" }, w);
+        tl.to(`${sel} .cw:nth-child(${i + 1})`, { scale: 1, duration: 0.15 }, w + 0.12);
+      });
+      tl.to(sel, { opacity: 0, duration: 0.1, ease: "power2.in" }, e - 0.1);
+      tl.set(sel, { opacity: 0, visibility: "hidden" }, e);
+    };
+    G("#cg0", 26.53, 29.0, [26.59, 27.34, 28.09]);
+    G("#cg1", 29.0, 32.17, [29.06, 30.09, 30.73, 31.37]);
+    G("#cg2", 32.17, 33.4, [32.23, 32.61, 33.0]);
+    G("#cg3", 33.4, 34.24, [33.46, 33.69, 33.84]);
+    G("#cg4", 34.24, 34.84, [34.3, 34.57, 34.76]);
+    G("#cg5", 34.84, 35.82, [34.9, 35.36]);
+    G("#cg6", 35.82, 36.67, [35.88, 36.15]);
+    G("#cg7", 39.5, 40.76, [39.56, 39.93, 40.38]);
+    G("#cg8", 40.76, 41.6, [40.82, 41.04]);
+    G("#cg9", 41.6, 42.32, [41.66, 41.9, 42.14]);
+    G("#cg10", 42.32, 43.29, [42.38, 42.54]);
+    G("#cg11", 43.29, 45.2, [43.35, 43.98, 44.61, 44.85]);
+    G("#cg12", 45.2, 46.4, [45.26, 45.67]);
+    G("#cg13", 75.39, 77.42, [75.45, 75.85, 76.17, 76.8]);
+    G("#cg14", 77.42, 78.43, [77.48, 77.87, 78.18]);
+    G("#cg15", 78.43, 78.83, [78.49, 78.65]);
+    G("#cg16", 78.83, 80.69, [78.89, 79.26, 79.51, 80.0]);
+    G("#cg17", 80.69, 82.3, [80.75, 81.22, 81.89]);
+    G("#cg18", 82.3, 84.71, [82.36, 83.18, 83.54, 84.0]);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

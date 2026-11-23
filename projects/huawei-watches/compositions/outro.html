@@ -1,0 +1,88 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Black.ttf"); font-weight: 900; }
+    #root {
+      position: absolute; inset: 0; direction: rtl; font-family: "Tajawal", sans-serif; color: #fff;
+      --red: #e4002b; --blue: #3b7bff; --gold: #e3c08f; --rose: #ff6b8b; --green: #2fcb7b;
+    }
+    .o-abs { position: absolute; opacity: 0; }
+    .o-grid { position: absolute; left: 110px; right: 110px; top: 1010px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .o-chip {
+      display: flex; align-items: center; justify-content: center; gap: 18px; padding: 26px 20px; border-radius: 30px;
+      background: rgba(14, 15, 20, 0.82); backdrop-filter: blur(22px); border: 1.5px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); font-weight: 900; font-size: 56px; line-height: 1; opacity: 0;
+    }
+    .o-chip i { width: 26px; height: 26px; border-radius: 50%; display: block; }
+    .o-bottom { left: 0; right: 0; top: 1040px; text-align: center; }
+    .o-pill {
+      display: inline-block; max-width: 780px; padding: 26px 50px 30px; border-radius: 34px; background: rgba(14, 15, 20, 0.84);
+      backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .o-pill .a { display: block; font-weight: 800; font-size: 52px; opacity: 0.85; }
+    .o-pill .b { display: block; font-weight: 900; font-size: 58px; line-height: 1.25; }
+    .o-pill .b em { font-style: normal; color: #ff2d55; }
+    .o-end { inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(8, 8, 10, 0.72), rgba(8, 8, 10, 0.94)); }
+    .o-lock { left: 0; right: 0; top: 640px; text-align: center; }
+    .o-word { display: block; direction: ltr; font: 900 150px/1 "Montserrat", sans-serif; letter-spacing: 16px; }
+    .o-bar { display: block; margin: 34px auto 30px; height: 10px; width: 300px; border-radius: 6px; background: var(--red); }
+    .lt { display: inline-block; }
+    .o-line { display: block; font-weight: 800; font-size: 60px; }
+    .o-cta {
+      display: inline-block; margin-top: 54px; padding: 26px 64px 30px; border-radius: 999px; background: var(--red);
+      font-weight: 900; font-size: 62px; box-shadow: 0 20px 60px rgba(228, 0, 43, 0.5);
+    }
+  </style>
+  <div id="root" data-composition-id="outro" data-width="1080" data-height="1920">
+    <!-- a gift for every generation -->
+    <div class="o-grid">
+      <div id="o-c1" class="o-chip"><i style="background: var(--blue)"></i>للأطفال</div>
+      <div id="o-c2" class="o-chip"><i style="background: var(--gold)"></i>للوالدين</div>
+      <div id="o-c3" class="o-chip"><i style="background: var(--rose)"></i>للشريك</div>
+      <div id="o-c4" class="o-chip"><i style="background: var(--green)"></i>أو لنفسك</div>
+    </div>
+    <div id="o-head" class="o-abs o-bottom">
+      <div class="o-pill">
+        <span class="a">هواوي عندها</span>
+        <span class="b">الهدية المثالية <em>لكل جيل</em></span>
+      </div>
+    </div>
+
+    <!-- end card -->
+    <div id="o-end" class="o-abs o-end"></div>
+    <div id="o-lock" class="o-abs o-lock">
+      <span id="o-word" class="o-word"><span class="lt">H</span><span class="lt">U</span><span class="lt">A</span><span class="lt">W</span><span class="lt">E</span><span class="lt">I</span></span>
+      <span id="o-bar" class="o-bar"></span>
+      <span id="o-line" class="o-line">الهدية المثالية لكل جيل</span>
+      <span id="o-cta" class="o-cta">لا تفوتون العروض</span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const O = 79.8;
+    const t = (g) => Math.max(0, +(g - O).toFixed(3));
+    const outt = (sel, g) => {
+      tl.to(sel, { opacity: 0, y: -16, duration: 0.24, ease: "power2.in" }, t(g) - 0.24);
+      tl.set(sel, { opacity: 0 }, t(g));
+    };
+
+    [80.5, 81.1, 81.7, 82.3].forEach((g, i) => {
+      tl.fromTo(`#o-c${i + 1}`, { opacity: 0, scale: 0.6, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, t(g));
+    });
+    tl.fromTo("#o-head", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(83.12));
+    ["#o-c1", "#o-c2", "#o-c3", "#o-c4"].forEach((s) => outt(s, 83.1));
+    outt("#o-head", 85.55);
+
+    tl.fromTo("#o-end", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, t(85.3));
+    tl.fromTo("#o-lock", { opacity: 0 }, { opacity: 1, duration: 0.01 }, t(85.55));
+    tl.fromTo("#o-word", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t(85.55));
+    tl.fromTo("#o-word .lt", { x: (i) => (i - 2.5) * 50 }, { x: 0, duration: 0.8, ease: "power4.out" }, t(85.55));
+    tl.fromTo("#o-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, t(85.9));
+    tl.fromTo("#o-line", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(86.0));
+    tl.fromTo("#o-cta", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, t(86.3));
+    tl.to("#o-cta", { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, t(87.6));
+
+    window.__timelines["outro"] = tl;
+  </script>
+</template>

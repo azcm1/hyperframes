@@ -1,0 +1,171 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Black.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      direction: rtl;
+      font-family: "Tajawal", sans-serif;
+      color: #fff;
+      --red: #e4002b;
+      --blue: #3b7bff;
+      --gold: #e3c08f;
+      --green: #2fcb7b;
+    }
+    .h-abs { position: absolute; opacity: 0; }
+    .h-scrim {
+      left: 0; right: 0; top: 0; height: 900px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0) 100%);
+    }
+    .h-scrim-b {
+      left: 0; right: 0; bottom: 0; height: 900px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0) 100%);
+    }
+    .h-kin { left: 0; right: 0; top: 250px; text-align: center; text-shadow: 0 8px 36px rgba(0, 0, 0, 0.45); }
+    .h-kin .k-sm { display: block; font-weight: 800; font-size: 66px; line-height: 1.1; opacity: 0.92; }
+    .h-kin .k-big { display: inline-block; font-weight: 900; font-size: 128px; line-height: 1.15; }
+    .h-kin .k-mid { display: block; font-weight: 800; font-size: 70px; line-height: 1.2; }
+    .k-red { color: var(--red); }
+    .k-gold { color: var(--gold); }
+    .h-flash { inset: 0; background: #fff; }
+    .h-vf { left: 130px; top: 760px; width: 520px; height: 620px; }
+    .h-rec {
+      position: absolute; top: 26px; left: 30px; direction: ltr;
+      font: 800 34px "Montserrat", sans-serif; letter-spacing: 3px; display: flex; align-items: center; gap: 12px;
+    }
+    .h-rec i { width: 22px; height: 22px; border-radius: 50%; background: var(--red); display: block; }
+    .h-ring {
+      left: 540px; top: 420px; width: 360px; height: 360px; margin: -180px 0 0 -180px;
+      border-radius: 50%; border: 10px solid var(--gold);
+    }
+    .h-gift {
+      display: inline-grid; place-items: center; width: 130px; height: 130px; border-radius: 36px;
+      background: var(--red); vertical-align: middle; margin-inline-start: 22px; box-shadow: 0 16px 40px rgba(228, 0, 43, 0.45);
+    }
+    .lt { display: inline-block; }
+    .h-word {
+      display: block; direction: ltr; font: 900 150px "Montserrat", sans-serif; letter-spacing: 14px; line-height: 1.1;
+    }
+    .h-bar { display: block; margin: 18px auto 0; width: 360px; height: 10px; border-radius: 6px; background: var(--red); }
+    .h-tag {
+      display: flex; align-items: center; gap: 16px; padding: 16px 28px 16px 18px; border-radius: 999px;
+      background: rgba(14, 15, 20, 0.78); backdrop-filter: blur(20px); border: 1.5px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35); font-weight: 800; font-size: 46px; line-height: 1; white-space: nowrap;
+    }
+    .h-tag i { width: 26px; height: 26px; border-radius: 50%; display: block; box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.16); }
+    .h-bottom { left: 0; right: 0; top: 1230px; text-align: center; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); }
+    .h-panel {
+      display: inline-block; max-width: 860px; padding: 20px 50px 28px; border-radius: 34px; background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .h-panel .k-big { display: inline-block; font-weight: 900; font-size: 104px; line-height: 1.15; }
+    .h-panel .k-mid { display: block; font-weight: 800; font-size: 56px; line-height: 1.25; }
+    .h-panel .k-sm { display: block; font-weight: 800; font-size: 48px; opacity: 0.9; }
+    .h-panel .h-word { font-size: 104px; letter-spacing: 12px; }
+    .h-gift { width: 104px !important; height: 104px !important; border-radius: 28px !important; }
+    .h-pill {
+      display: inline-block; max-width: 860px; padding: 22px 46px 26px; border-radius: 30px; background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(20px); font-weight: 900; font-size: 62px; line-height: 1.2; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .h-pill .k-red { color: #ff2d55; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="h-scrim" class="h-abs h-scrim"></div>
+    <div id="h-scrim-b" class="h-abs h-scrim-b"></div>
+
+    <!-- 1: this watch takes pictures -->
+    <svg id="h-vf" class="h-abs h-vf" viewBox="0 0 520 620" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round">
+      <path d="M8 90V8h82M430 8h82v82M512 530v82h-82M90 612H8v-82" />
+    </svg>
+    <div id="h-l1" class="h-abs h-kin">
+      <span class="k-sm">هذي الساعة</span>
+      <span class="k-big">تصوّر…</span>
+    </div>
+    <div id="h-flash" class="h-abs h-flash"></div>
+
+    <!-- 2: and this one inflates -->
+    <div id="h-ring" class="h-abs h-ring"></div>
+    <div id="h-l2" class="h-abs h-kin">
+      <span class="k-sm">وهذي الساعة</span>
+      <span id="h-puff" class="k-big k-gold">تنتفخ!</span>
+    </div>
+
+    <!-- 3: the question - on the three-watches shot, low so the watch faces stay clear -->
+    <div id="h-l3" class="h-abs h-bottom">
+      <span class="h-panel">
+        <span class="k-big">محتار<span id="h-gift" class="h-gift"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span></span>
+        <span id="h-l3b" class="k-mid">وش تهدي اللي تحبهم؟</span>
+      </span>
+    </div>
+
+    <!-- 4: brand -->
+    <div id="h-l4" class="h-abs h-bottom">
+      <span class="h-panel">
+        <span class="k-sm">تعالوا نشوف ساعات</span>
+        <span id="h-word" class="h-word"><span class="lt">H</span><span class="lt">U</span><span class="lt">A</span><span class="lt">W</span><span class="lt">E</span><span class="lt">I</span></span>
+        <span class="k-mid">الجديدة</span>
+      </span>
+    </div>
+
+    <!-- 5: a gift for everyone - tags beside each watch face -->
+    <div id="h-t1" class="h-abs h-tag" style="left: 50px; top: 630px"><i style="background: var(--green)"></i>لك أنت</div>
+    <div id="h-t2" class="h-abs h-tag" style="left: 150px; top: 470px"><i style="background: var(--gold)"></i>للوالدين</div>
+    <div id="h-t3" class="h-abs h-tag" style="left: 600px; top: 1090px"><i style="background: var(--blue)"></i>للصغار</div>
+    <div id="h-l5" class="h-abs h-bottom">
+      <span class="h-pill">فيه هدية <span class="k-red">لكل واحد</span> في العيلة</span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const out = (sel, t) => {
+      tl.to(sel, { opacity: 0, duration: 0.22, ease: "power2.in" }, t - 0.22);
+      tl.set(sel, { opacity: 0 }, t);
+    };
+
+    tl.fromTo("#h-scrim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    out("#h-scrim", 8.35);
+
+    // 1 - camera: the whole kids shot (0 - 4.53), flash as the camera pops out
+    tl.fromTo("#h-l1", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.15);
+    tl.fromTo("#h-l1 .k-sm", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.15);
+    tl.fromTo("#h-l1 .k-big", { opacity: 0, scale: 1.35, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power4.out" }, 0.75);
+    tl.fromTo("#h-vf", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.4);
+    tl.fromTo("#h-flash", { opacity: 0 }, { opacity: 0.7, duration: 0.05 }, 3.45);
+    tl.to("#h-flash", { opacity: 0, duration: 0.35, ease: "power2.out" }, 3.5);
+    tl.to("#h-vf", { scale: 0.94, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.inOut" }, 3.45);
+    out("#h-vf", 2.9);
+    out("#h-l1", 4.5);
+
+    // 2 - inflate: the D3 shot (4.53 - 8.4); «تنتفخ» lands as the airbag opens
+    tl.fromTo("#h-l2", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 5.0);
+    tl.fromTo("#h-l2 .k-sm", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.0);
+    tl.fromTo("#h-puff", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1.1, 0.45)" }, 6.1);
+    tl.fromTo("#h-ring", { opacity: 0.9, scale: 0.3 }, { opacity: 0, scale: 1.6, duration: 0.9, ease: "power2.out", immediateRender: false }, 6.15);
+    tl.to("#h-puff", { scale: 1.08, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.0);
+    out("#h-l2", 8.35);
+
+    // 3 - question on the flat-lay
+    tl.fromTo("#h-scrim-b", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 8.4);
+    tl.fromTo("#h-l3", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 8.48);
+    tl.fromTo("#h-gift", { rotation: -25, scale: 0 }, { rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2.2)" }, 8.8);
+    tl.fromTo("#h-l3b", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.4);
+    tl.to("#h-gift", { rotation: 10, duration: 0.12, yoyo: true, repeat: 3, ease: "sine.inOut" }, 10.3);
+    out("#h-l3", 11.3);
+
+    // 4 - brand
+    tl.fromTo("#h-l4", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 11.38);
+    tl.fromTo("#h-word .lt", { x: (i) => (i - 2.5) * 46 }, { x: 0, duration: 0.7, ease: "power4.out" }, 11.6);
+    out("#h-l4", 13.42);
+
+    // 5 - a gift for everyone
+    tl.fromTo("#h-l5", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 13.48);
+    ["#h-t2", "#h-t1", "#h-t3"].forEach((s, i) => {
+      tl.fromTo(s, { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, 14.3 + i * 0.45);
+    });
+    ["#h-l5", "#h-t1", "#h-t2", "#h-t3", "#h-scrim-b"].forEach((s) => out(s, 17.5));
+
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

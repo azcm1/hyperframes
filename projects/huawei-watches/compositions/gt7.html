@@ -1,0 +1,139 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Black.ttf"); font-weight: 900; }
+    #root {
+      position: absolute; inset: 0; direction: rtl; font-family: "Tajawal", sans-serif; color: #fff;
+      --acc: #2fcb7b;
+    }
+    .g-abs { position: absolute; opacity: 0; }
+    .c-row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
+    .c-chip {
+      display: flex; align-items: center; gap: 20px; padding: 16px 38px 16px 16px; border-radius: 999px;
+      background: rgba(14, 15, 20, 0.8); backdrop-filter: blur(22px); border: 1.5px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); font-weight: 800; font-size: 50px; line-height: 1; white-space: nowrap; opacity: 0;
+    }
+    .c-ic { width: 80px; height: 80px; border-radius: 50%; background: var(--acc); display: grid; place-items: center; flex: none; }
+    .c-ic svg { width: 44px; height: 44px; }
+    .c-card {
+      left: 130px; right: 130px; top: 300px; padding: 36px 44px 42px; border-radius: 42px; background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(24px); border: 1.5px solid rgba(255, 255, 255, 0.14); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4); overflow: hidden;
+    }
+    .c-card .num {
+      position: absolute; left: 40px; top: 0; font: 900 200px/1 "Montserrat", sans-serif; color: transparent;
+      -webkit-text-stroke: 3px rgba(255, 255, 255, 0.2); direction: ltr;
+    }
+    .c-card .kick { display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 54px; color: var(--acc); }
+    .c-card .kick i { width: 14px; height: 54px; border-radius: 8px; background: var(--acc); display: block; }
+    .c-card .name { margin-top: 18px; direction: ltr; text-align: right; font: 800 52px/1.1 "Montserrat", sans-serif; white-space: nowrap; }
+    .c-card .name b { color: var(--acc); }
+    .c-card .sub { margin-top: 18px; font-weight: 700; font-size: 42px; opacity: 0.8; }
+    .g-scrim-b { left: 0; right: 0; bottom: 0; height: 760px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0)); }
+    .g-kin { left: 0; right: 0; top: 1390px; text-align: center; text-shadow: 0 8px 36px rgba(0, 0, 0, 0.5); }
+    .g-kin .a { display: block; font-weight: 900; font-size: 160px; line-height: 1.1; color: var(--acc); }
+    .g-kin .b { display: block; font-weight: 900; font-size: 84px; line-height: 1.2; }
+    .g-ready { display: flex; align-items: center; gap: 40px; padding: 34px 46px; }
+    .g-ready svg { width: 220px; height: 220px; flex: none; transform: rotate(-90deg); }
+    .g-ready .t1 { font-weight: 900; font-size: 54px; line-height: 1.2; }
+    .g-ready .st { position: relative; height: 64px; margin-top: 16px; }
+    .g-ready .st div { position: absolute; right: 0; top: 0; padding: 10px 24px; border-radius: 999px; font-weight: 800; font-size: 40px; white-space: nowrap; }
+    .g-q { background: rgba(255, 255, 255, 0.14); }
+    .g-ok { background: rgba(47, 203, 123, 0.22); color: #6ff0a8; opacity: 0; }
+    .g-day { margin-top: 14px; font-weight: 700; font-size: 38px; opacity: 0; }
+    .g-bat { width: 96px; height: 50px; border: 5px solid #fff; border-radius: 12px; padding: 5px; position: relative; flex: none; }
+    .g-bat::after { content: ""; position: absolute; left: -14px; top: 12px; width: 8px; height: 16px; border-radius: 3px; background: #fff; }
+    .g-bat i { display: block; height: 100%; width: 0; border-radius: 5px; background: var(--acc); margin-right: auto; margin-left: 0; float: right; }
+  </style>
+  <div id="root" data-composition-id="gt7" data-width="1080" data-height="1920">
+    <div id="g-scrim" class="g-abs g-scrim-b"></div>
+
+    <!-- and you? -->
+    <div id="g-kin" class="g-abs g-kin">
+      <span id="g-ka" class="a">وأنت؟</span>
+      <span id="g-kb" class="b">تستاهل هدية بعد</span>
+    </div>
+
+    <!-- chapter 03 -->
+    <div id="g-card" class="g-abs c-card" style="top: 1440px; right: 170px">
+      <div class="num" data-layout-ignore>03</div>
+      <div id="g-kick" class="kick"><i></i>هديتك أنت</div>
+      <div id="g-name" class="name">HUAWEI WATCH <b>GT 7</b></div>
+    </div>
+
+    <!-- style -->
+    <div class="c-row" style="top: 1470px">
+      <div id="g-style" class="c-chip" style="font-size: 58px; padding: 18px 44px 18px 18px">
+        <span class="c-ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg></span>
+        كشخة بالثوب وبكل لبس
+      </div>
+    </div>
+
+    <!-- readiness -->
+    <div id="g-ready" class="g-abs c-card g-ready" style="top: 300px; left: 110px; right: 110px">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="10" />
+        <circle id="g-arc" cx="50" cy="50" r="40" fill="none" stroke="#2fcb7b" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3" />
+      </svg>
+      <div>
+        <div class="t1">مؤشر الجاهزية<br />البدنية</div>
+        <div class="st"><div id="g-q" class="g-q">جسمك جاهز؟</div><div id="g-ok" class="g-ok">✓ جاهز</div></div>
+        <div id="g-day" class="g-day">قبل ما تبدأ يومك</div>
+      </div>
+    </div>
+
+    <!-- apps + battery -->
+    <div class="c-row" style="top: 280px">
+      <div id="g-apps" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg></span>تطبيقات كثيرة</div>
+    </div>
+    <div class="c-row" style="top: 410px">
+      <div id="g-batt" class="c-chip" style="padding: 22px 38px 22px 34px; gap: 30px"><span class="g-bat"><i id="g-fill"></i></span>بطارية تدوم لأيام</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const O = 64.9;
+    const t = (g) => Math.max(0, +(g - O).toFixed(3));
+    const inn = (sel, g, from = {}) =>
+      tl.fromTo(sel, { opacity: 0, y: 34, scale: 0.9, ...from }, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(g));
+    const outt = (sel, g) => {
+      tl.to(sel, { opacity: 0, y: -16, duration: 0.24, ease: "power2.in" }, t(g) - 0.24);
+      tl.set(sel, { opacity: 0 }, t(g));
+    };
+
+    // and you?
+    tl.fromTo("#g-scrim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t(64.92));
+    tl.fromTo("#g-kin", { opacity: 0 }, { opacity: 1, duration: 0.01 }, t(64.95));
+    tl.fromTo("#g-ka", { opacity: 0, scale: 1.5, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power4.out" }, t(64.95));
+    tl.fromTo("#g-kb", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t(65.7));
+    outt("#g-kin", 67.2);
+
+    // chapter card
+    tl.fromTo("#g-card", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.6, ease: "power4.out" }, t(67.22));
+    tl.fromTo("#g-kick", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t(67.35));
+    tl.fromTo("#g-name", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(67.5));
+    tl.to("#g-card", { x: -120, opacity: 0, duration: 0.3, ease: "power3.in" }, t(69.4));
+    tl.set("#g-card", { opacity: 0 }, t(69.7));
+
+    // style
+    inn("#g-style", 69.75, { scale: 0.7 });
+    outt("#g-style", 71.25);
+    outt("#g-scrim", 71.3);
+
+    // readiness
+    inn("#g-ready", 71.4, { y: -30 });
+    tl.to("#g-arc", { attr: { "stroke-dashoffset": 30 }, duration: 1.8, ease: "power2.inOut" }, t(71.7));
+    tl.to("#g-q", { opacity: 0, duration: 0.15 }, t(73.45));
+    tl.fromTo("#g-ok", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, t(73.5));
+    tl.fromTo("#g-day", { opacity: 0, y: 14 }, { opacity: 0.85, y: 0, duration: 0.4, ease: "power3.out" }, t(74.85));
+    outt("#g-ready", 76.5);
+
+    // apps + battery
+    inn("#g-apps", 76.7);
+    inn("#g-batt", 78.3);
+    tl.fromTo("#g-fill", { width: "0%" }, { width: "100%", duration: 1.0, ease: "power2.out" }, t(78.6));
+    ["#g-apps", "#g-batt"].forEach((s) => outt(s, 79.78));
+
+    window.__timelines["gt7"] = tl;
+  </script>
+</template>

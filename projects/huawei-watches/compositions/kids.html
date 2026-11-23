@@ -1,0 +1,202 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Black.ttf"); font-weight: 900; }
+    #root {
+      position: absolute; inset: 0; direction: rtl; font-family: "Tajawal", sans-serif; color: #fff;
+      --acc: #3b7bff; --red: #ff2d55;
+    }
+    .k-abs { position: absolute; opacity: 0; }
+    .c-row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
+    .c-chip {
+      display: flex; align-items: center; gap: 20px; padding: 16px 38px 16px 16px; border-radius: 999px;
+      background: rgba(14, 15, 20, 0.8); backdrop-filter: blur(22px); border: 1.5px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); font-weight: 800; font-size: 50px; line-height: 1; white-space: nowrap; opacity: 0;
+    }
+    .c-chip.ltr { direction: ltr; font-family: "Montserrat", sans-serif; font-size: 44px; padding: 16px 34px 16px 16px; }
+    .c-ic { width: 80px; height: 80px; border-radius: 50%; background: var(--acc); display: grid; place-items: center; flex: none; }
+    .c-ic svg { width: 44px; height: 44px; }
+    .c-badge { font: 900 34px "Montserrat", sans-serif; padding: 8px 14px; border-radius: 12px; background: var(--acc); direction: ltr; }
+    .c-card {
+      left: 130px; right: 130px; top: 300px; padding: 36px 44px 42px; border-radius: 42px; background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(24px); border: 1.5px solid rgba(255, 255, 255, 0.14); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4); overflow: hidden;
+    }
+    .c-card .num {
+      position: absolute; left: 40px; top: 0; font: 900 200px/1 "Montserrat", sans-serif; color: transparent;
+      -webkit-text-stroke: 3px rgba(255, 255, 255, 0.2); direction: ltr;
+    }
+    .c-card .kick { display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 54px; color: var(--acc); }
+    .c-card .kick i { width: 14px; height: 54px; border-radius: 8px; background: var(--acc); display: block; }
+    .c-card .name { margin-top: 18px; direction: ltr; text-align: right; font: 800 52px/1.1 "Montserrat", sans-serif; white-space: nowrap; }
+    .c-card .name b { color: var(--acc); }
+    .c-card .sub { margin-top: 18px; font-weight: 700; font-size: 42px; opacity: 0.8; }
+    .c-scrim { left: 0; right: 0; top: 0; height: 860px; background: linear-gradient(180deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0)); }
+    .c-kin { left: 0; right: 0; top: 300px; text-align: center; text-shadow: 0 8px 36px rgba(0, 0, 0, 0.45); }
+    .c-kin .l1 { display: block; font-weight: 800; font-size: 76px; line-height: 1.2; }
+    .c-kin .l2 { display: inline-block; font-weight: 900; font-size: 94px; line-height: 1.2; color: #8fb4ff; }
+    .k-rec {
+      right: 110px; top: 280px; direction: ltr; display: flex; align-items: center; gap: 14px; padding: 14px 24px;
+      border-radius: 18px; background: rgba(0, 0, 0, 0.55); font: 800 38px "Montserrat", sans-serif; letter-spacing: 2px;
+    }
+    .k-rec i { width: 24px; height: 24px; border-radius: 50%; background: #ff2d2d; display: block; }
+    .k-flash { inset: 0; background: #fff; }
+    .k-geo { display: flex; align-items: center; gap: 36px; padding: 34px 44px; }
+    .k-geo svg { width: 300px; height: 300px; flex: none; }
+    .k-geo .t1 { font-weight: 900; font-size: 60px; }
+    .k-geo .st { margin-top: 16px; display: inline-flex; align-items: center; gap: 12px; padding: 10px 22px; border-radius: 999px; font-weight: 800; font-size: 38px; }
+    .k-in { background: rgba(47, 203, 123, 0.2); color: #5be39b; }
+    .k-out { background: rgba(255, 45, 85, 0.22); color: #ff6b85; position: absolute; opacity: 0; }
+    .k-note {
+      left: 90px; right: 90px; top: 700px; display: flex; align-items: center; gap: 24px; padding: 26px 32px; border-radius: 34px;
+      background: rgba(250, 250, 252, 0.94); color: #111; box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+    }
+    .k-note .ap { width: 92px; height: 92px; border-radius: 24px; background: var(--red); display: grid; place-items: center; flex: none; }
+    .k-note .ap svg { width: 52px; height: 52px; }
+    .k-note b { display: block; font-weight: 900; font-size: 44px; }
+    .k-note span { display: block; font-weight: 700; font-size: 38px; opacity: 0.75; margin-top: 6px; }
+  </style>
+  <div id="root" data-composition-id="kids" data-width="1080" data-height="1920">
+    <div id="k-scrim" class="k-abs c-scrim"></div>
+
+    <!-- chapter 01 -->
+    <div id="k-card" class="k-abs c-card" style="top: 250px">
+      <div class="num" data-layout-ignore>01</div>
+      <div id="k-kick" class="kick"><i></i>هدية الصغار</div>
+      <div id="k-name" class="name">HUAWEI Kids Watch <b>X1</b></div>
+    </div>
+
+    <!-- detachable camera -->
+    <div id="k-rec" class="k-abs k-rec"><i id="k-dot"></i>REC <span id="k-time">00:00</span></div>
+    <div class="c-row" style="top: 1150px">
+      <div id="k-cam" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg></span>كاميرا تنفصل</div>
+    </div>
+    <div class="c-row" style="top: 1280px">
+      <div id="k-mem" class="c-chip" style="font-size: 44px">يصوّر ذكرياته بنفسه</div>
+    </div>
+    <div id="k-flash" class="k-abs k-flash"></div>
+
+    <!-- SIM + HD video calls -->
+    <div class="c-row" style="top: 280px">
+      <div id="k-sim" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><rect x="9" y="11" width="6" height="6" rx="1"/></svg></span>شريحة اتصال</div>
+    </div>
+    <div class="c-row" style="top: 410px">
+      <div id="k-vid" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 11l6-3v8l-6-3z"/></svg></span>مكالمات فيديو <span id="k-hd" class="c-badge">HD</span></div>
+    </div>
+
+    <!-- safe zone -->
+    <div id="k-geo" class="k-abs c-card k-geo" style="top: 300px; left: 110px; right: 110px">
+      <svg viewBox="0 0 300 300" fill="none">
+        <circle id="k-zone" cx="150" cy="150" r="104" fill="rgba(59,123,255,0.16)" stroke="#3b7bff" stroke-width="6" stroke-dasharray="16 12" />
+        <path d="M128 156l22-20 22 20v24h-44z" stroke="#fff" stroke-width="6" stroke-linejoin="round" />
+        <circle id="k-kid" cx="150" cy="150" r="20" fill="#ffd24a" stroke="#fff" stroke-width="5" />
+      </svg>
+      <div>
+        <div class="t1">المنطقة الآمنة</div>
+        <div style="position: relative">
+          <div id="k-stin" class="st k-in">● داخل المنطقة</div>
+          <div id="k-stout" class="st k-out" style="right: 0; top: 0">● خارج المنطقة</div>
+        </div>
+      </div>
+    </div>
+    <div id="k-note" class="k-abs k-note">
+      <div class="ap"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></div>
+      <div><b>تنبيه فوري</b><span>طفلك طلع من المنطقة الآمنة</span></div>
+    </div>
+
+    <!-- he's happy, you're at ease -->
+    <div id="k-kin" class="k-abs c-kin">
+      <span id="k-kin1" class="l1">هدية يفرح فيها هو…</span>
+      <span id="k-kin2" class="l2">وترتاح فيها أنت</span>
+    </div>
+
+    <!-- pairing -->
+    <div class="c-row" style="top: 280px">
+      <div id="k-link" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>تربطها بجوالك بكل سهولة</div>
+    </div>
+    <div class="c-row" style="top: 410px">
+      <div id="k-ios" class="c-chip ltr"><span class="c-ic" style="width: 64px; height: 64px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>iOS</div>
+      <div id="k-and" class="c-chip ltr"><span class="c-ic" style="width: 64px; height: 64px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>Android</div>
+    </div>
+
+    <!-- easy app -->
+    <div class="c-row" style="top: 280px">
+      <div id="k-app" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>تطبيق سهل وسلس</div>
+    </div>
+    <div class="c-row" style="top: 410px">
+      <div id="k-all" class="c-chip" style="font-size: 44px">للكبير والصغير</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const O = 13.5;
+    const t = (g) => Math.max(0, +(g - O).toFixed(3));
+    const inn = (sel, g, from = {}) =>
+      tl.fromTo(sel, { opacity: 0, y: 34, scale: 0.9, ...from }, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(g));
+    const outt = (sel, g) => {
+      tl.to(sel, { opacity: 0, y: -16, duration: 0.24, ease: "power2.in" }, t(g) - 0.24);
+      tl.set(sel, { opacity: 0 }, t(g));
+    };
+
+    // chapter card
+    tl.fromTo("#k-card", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.6, ease: "power4.out" }, t(13.55));
+    tl.fromTo("#k-kick", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t(13.75));
+    tl.fromTo("#k-name", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(14.85));
+        tl.to("#k-card", { x: -120, opacity: 0, duration: 0.3, ease: "power3.in" }, t(18.2));
+    tl.set("#k-card", { opacity: 0 }, t(18.5));
+
+    // camera
+    inn("#k-cam", 18.6);
+    tl.fromTo("#k-rec", { opacity: 0 }, { opacity: 1, duration: 0.2 }, t(18.8));
+    tl.fromTo("#k-dot", { opacity: 1 }, { opacity: 0.15, duration: 0.4, yoyo: true, repeat: 7, ease: "steps(1)" }, t(18.8));
+    const rec = { s: 0 };
+    tl.to(rec, {
+      s: 3.5, duration: 3.5, ease: "none",
+      onUpdate: () => { document.getElementById("k-time").textContent = "00:0" + Math.floor(rec.s); },
+    }, t(18.8));
+    inn("#k-mem", 20.15);
+    tl.fromTo("#k-flash", { opacity: 0 }, { opacity: 0.7, duration: 0.05 }, t(21.0));
+    tl.to("#k-flash", { opacity: 0, duration: 0.3 }, t(21.05));
+    ["#k-cam", "#k-mem", "#k-rec"].forEach((s) => outt(s, 22.35));
+
+    // SIM + video
+    inn("#k-sim", 22.6);
+    inn("#k-vid", 25.05);
+    tl.fromTo("#k-hd", { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(3)" }, t(26.4));
+    ["#k-sim", "#k-vid"].forEach((s) => outt(s, 28.05));
+
+    // safe zone
+    inn("#k-geo", 28.2, { y: -30 });
+    tl.fromTo("#k-zone", { scale: 0.6, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.6, ease: "back.out(1.6)" }, t(28.35));
+    tl.fromTo("#k-kid", { x: 0, y: 0 }, { x: 40, y: -30, duration: 1.0, ease: "sine.inOut" }, t(29.0));
+    tl.to("#k-kid", { x: 128, y: -96, duration: 0.9, ease: "power2.in" }, t(30.4));
+    tl.to("#k-zone", { attr: { stroke: "#ff2d55", fill: "rgba(255,45,85,0.16)" }, duration: 0.25 }, t(31.3));
+    tl.to("#k-stin", { opacity: 0, duration: 0.15 }, t(31.3));
+    tl.fromTo("#k-stout", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, t(31.35));
+    tl.fromTo("#k-note", { opacity: 0, y: -80 }, { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.5)" }, t(31.8));
+    tl.to("#k-note", { x: -10, duration: 0.06, yoyo: true, repeat: 5, ease: "sine.inOut" }, t(32.4));
+    outt("#k-geo", 32.5);
+    outt("#k-note", 33.55);
+
+    // he's happy / you're at ease
+    tl.fromTo("#k-scrim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t(33.4));
+    tl.fromTo("#k-kin", { opacity: 0 }, { opacity: 1, duration: 0.01 }, t(33.45));
+    tl.fromTo("#k-kin1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t(33.45));
+    tl.fromTo("#k-kin2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" }, t(34.15));
+    outt("#k-kin", 36.25);
+    outt("#k-scrim", 36.3);
+
+    // pairing
+    inn("#k-link", 36.3);
+    inn("#k-ios", 37.65, { x: 40 });
+    inn("#k-and", 38.2, { x: -40 });
+    ["#k-link", "#k-ios", "#k-and"].forEach((s) => outt(s, 39.25));
+
+    // easy app
+    inn("#k-app", 39.35);
+    inn("#k-all", 41.2);
+    ["#k-app", "#k-all"].forEach((s) => outt(s, 42.25));
+
+    window.__timelines["kids"] = tl;
+  </script>
+</template>

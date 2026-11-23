@@ -1,0 +1,166 @@
+<template>
+  <style>
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Bold.ttf"); font-weight: 700; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-ExtraBold.ttf"); font-weight: 800; }
+    @font-face { font-family: "Tajawal"; src: url("assets/fonts/Tajawal-Black.ttf"); font-weight: 900; }
+    #root {
+      position: absolute; inset: 0; direction: rtl; font-family: "Tajawal", sans-serif; color: #fff;
+      --acc: #e3c08f; --red: #ff2d55;
+    }
+    .d-abs { position: absolute; opacity: 0; }
+    .c-row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; }
+    .c-chip {
+      display: flex; align-items: center; gap: 20px; padding: 16px 38px 16px 16px; border-radius: 999px;
+      background: rgba(14, 15, 20, 0.8); backdrop-filter: blur(22px); border: 1.5px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); font-weight: 800; font-size: 50px; line-height: 1; white-space: nowrap; opacity: 0;
+    }
+    .c-ic { width: 80px; height: 80px; border-radius: 50%; background: var(--acc); display: grid; place-items: center; flex: none; }
+    .c-ic svg { width: 44px; height: 44px; }
+    .c-card {
+      left: 130px; right: 130px; top: 300px; padding: 36px 44px 42px; border-radius: 42px; background: rgba(14, 15, 20, 0.82);
+      backdrop-filter: blur(24px); border: 1.5px solid rgba(255, 255, 255, 0.14); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4); overflow: hidden;
+    }
+    .c-card .num {
+      position: absolute; left: 40px; top: 0; font: 900 200px/1 "Montserrat", sans-serif; color: transparent;
+      -webkit-text-stroke: 3px rgba(255, 255, 255, 0.2); direction: ltr;
+    }
+    .c-card .kick { display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 54px; color: var(--acc); }
+    .c-card .kick i { width: 14px; height: 54px; border-radius: 8px; background: var(--acc); display: block; }
+    .c-card .name { margin-top: 18px; direction: ltr; text-align: right; font: 800 52px/1.1 "Montserrat", sans-serif; white-space: nowrap; }
+    .c-card .name b { color: var(--acc); }
+    .c-card .sub { margin-top: 18px; font-weight: 700; font-size: 42px; opacity: 0.8; }
+    .d-scrim-b { left: 0; right: 0; bottom: 0; height: 760px; background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); }
+    .d-kin { left: 0; right: 0; top: 1440px; text-align: center; font-weight: 900; font-size: 120px; line-height: 1.2; text-shadow: 0 8px 36px rgba(0, 0, 0, 0.5); }
+    .d-kin b { color: var(--acc); }
+    .d-big { left: 0; right: 0; top: 1400px; text-align: center; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); }
+    .d-big .n { display: block; direction: ltr; font: 900 210px/1 "Montserrat", sans-serif; color: var(--acc); }
+    .d-big .l { display: block; font-weight: 900; font-size: 72px; margin-top: 6px; }
+    .d-dim { inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.72)); }
+    .d-q { left: 160px; right: 160px; top: 560px; text-align: center; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); }
+    .d-q .a { display: block; font-weight: 800; font-size: 50px; line-height: 1.3; }
+    .d-q .b { display: block; font-weight: 900; font-size: 94px; line-height: 1.35; color: var(--acc); margin: 10px 0; }
+    .d-q .c { display: block; font-weight: 800; font-size: 52px; line-height: 1.35; }
+    .d-q .ln { display: block; margin: 34px auto 0; height: 6px; width: 260px; border-radius: 4px; background: var(--acc); }
+  </style>
+  <div id="root" data-composition-id="d3" data-width="1080" data-height="1920">
+    <div id="d-scrim" class="d-abs d-scrim-b"></div>
+
+    <!-- tie back to the hook -->
+    <div id="d-kin" class="d-abs d-kin">أما اللي <b>تنتفخ</b>…</div>
+
+    <!-- chapter 02: card sits below the watch so the face stays clear -->
+    <div id="d-card" class="d-abs c-card" style="top: 1430px; right: 170px">
+      <div class="num" data-layout-ignore>02</div>
+      <div id="d-kick" class="kick"><i></i>هدية الوالدين</div>
+      <div id="d-name" class="name">HUAWEI WATCH <b>D3</b></div>
+      <div id="d-sub" class="sub">اهتم بمن اهتموا بك</div>
+    </div>
+
+    <!-- medically certified -->
+    <div class="c-row" style="top: 1450px">
+      <div id="d-med" class="c-chip"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 9v6M9 12h6"/></svg></span>معتمدة طبيًا</div>
+    </div>
+    <div class="c-row" style="top: 1570px">
+      <div id="d-bp" class="c-chip" style="font-size: 44px">لقياس ضغط الدم</div>
+    </div>
+
+    <!-- airbag -->
+    <div class="c-row" style="top: 1450px">
+      <div id="d-air" class="c-chip">
+        <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><rect id="d-bag" x="6" y="9.5" width="12" height="5" rx="2.5" fill="#141414"/></svg></span>
+        وسادة هوائية داخل السوار
+      </div>
+    </div>
+    <div class="c-row" style="top: 1570px">
+      <div id="d-lvl" class="c-chip" style="font-size: 44px">قياس بمستوى طبي من المعصم</div>
+      <div id="d-small" class="c-chip" style="font-size: 44px; position: absolute">بدون جهاز كبير ✕</div>
+    </div>
+
+    <!-- 100+ indicators -->
+    <div id="d-100" class="d-abs d-big">
+      <span class="n">+<span id="d-count">0</span></span>
+      <span class="l">مؤشر صحي</span>
+    </div>
+
+    <!-- HUAWEI Health -->
+    <div class="c-row" style="top: 280px">
+      <div id="d-health" class="c-chip" style="direction: ltr; font-family: 'Montserrat', sans-serif; font-size: 46px; padding: 16px 16px 16px 38px">
+        HUAWEI Health
+        <span class="c-ic" style="background: #ff2d55"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span>
+      </div>
+    </div>
+    <div class="c-row" style="top: 400px">
+      <div id="d-fam" class="c-chip" style="font-size: 44px">تتابع صحة أهلك أول بأول</div>
+    </div>
+
+    <!-- the line -->
+    <div id="d-dim" class="d-abs d-dim"></div>
+    <div id="d-q" class="d-abs d-q">
+      <span id="d-qa" class="a">أحيانًا أحلى طريقة تقول فيها</span>
+      <span id="d-qb" class="b">«أنا أهتم فيك»</span>
+      <span id="d-qc" class="c">إنك تساعد اللي تحبه<br />يهتم بصحته</span>
+      <span id="d-ln" class="ln"></span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const O = 42.3;
+    const t = (g) => Math.max(0, +(g - O).toFixed(3));
+    const inn = (sel, g, from = {}) =>
+      tl.fromTo(sel, { opacity: 0, y: 34, scale: 0.9, ...from }, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(g));
+    const outt = (sel, g) => {
+      tl.to(sel, { opacity: 0, y: -16, duration: 0.24, ease: "power2.in" }, t(g) - 0.24);
+      tl.set(sel, { opacity: 0 }, t(g));
+    };
+
+    // tie-back + chapter card
+    tl.fromTo("#d-scrim", { opacity: 0 }, { opacity: 1, duration: 0.25 }, t(42.32));
+    tl.fromTo("#d-kin", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.55, ease: "elastic.out(1, 0.5)" }, t(42.35));
+    outt("#d-kin", 43.75);
+    tl.fromTo("#d-card", { opacity: 0, x: 140 }, { opacity: 1, x: 0, duration: 0.6, ease: "power4.out" }, t(43.75));
+    tl.fromTo("#d-kick", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t(43.9));
+    tl.fromTo("#d-name", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(44.7));
+    tl.fromTo("#d-sub", { opacity: 0, y: 20 }, { opacity: 0.8, y: 0, duration: 0.4, ease: "power3.out" }, t(44.95));
+    tl.to("#d-card", { x: -120, opacity: 0, duration: 0.3, ease: "power3.in" }, t(46.15));
+    tl.set("#d-card", { opacity: 0 }, t(46.45));
+
+    // certified
+    inn("#d-med", 46.2);
+    inn("#d-bp", 46.45);
+    ["#d-med", "#d-bp"].forEach((s) => outt(s, 47.6));
+
+    // airbag: the little bag breathes in twice
+    inn("#d-air", 47.65);
+    tl.fromTo("#d-bag", { scaleY: 0.25, transformOrigin: "50% 50%" }, { scaleY: 1.2, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 3 }, t(47.9));
+    inn("#d-lvl", 48.85);
+    outt("#d-lvl", 51.6);
+    inn("#d-small", 51.65);
+    ["#d-air", "#d-small"].forEach((s) => outt(s, 52.8));
+
+    // +100
+    tl.fromTo("#d-100", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t(52.8));
+    const c = { v: 0 };
+    tl.to(c, { v: 100, duration: 1.1, ease: "power3.out", onUpdate: () => { document.getElementById("d-count").textContent = Math.round(c.v); } }, t(52.85));
+    tl.to("#d-100", { scale: 1.06, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, t(53.85));
+    outt("#d-100", 54.6);
+    outt("#d-scrim", 55.15);
+
+    // health app
+    inn("#d-health", 54.75);
+    inn("#d-fam", 57.05);
+    ["#d-health", "#d-fam"].forEach((s) => outt(s, 58.85));
+
+    // the emotional line
+    tl.fromTo("#d-dim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, t(58.9));
+    tl.fromTo("#d-q", { opacity: 0 }, { opacity: 1, duration: 0.01 }, t(58.95));
+    tl.fromTo("#d-qa", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t(59.0));
+    tl.fromTo("#d-qb", { opacity: 0, scale: 0.85, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }, t(61.35));
+    tl.fromTo("#d-qc", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t(62.35));
+    tl.fromTo("#d-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.out" }, t(62.6));
+    outt("#d-q", 64.85);
+    tl.to("#d-dim", { opacity: 0, duration: 0.3 }, t(64.55));
+    tl.set("#d-dim", { opacity: 0 }, t(64.85));
+
+    window.__timelines["d3"] = tl;
+  </script>
+</template>
