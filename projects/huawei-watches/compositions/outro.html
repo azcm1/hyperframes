@@ -34,7 +34,7 @@
       background: rgba(14, 15, 20, 0.86); backdrop-filter: blur(20px); border: 1.5px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); text-align: center;
     }
-    .o-pt .nm { display: flex; align-items: center; justify-content: center; gap: 10px; direction: ltr; font: 700 26px/1.2 "Montserrat", sans-serif; opacity: 0.9; }
+    .o-pt .nm { display: flex; align-items: center; justify-content: center; gap: 10px; direction: ltr; font: 700 28px/1.2 "Montserrat", sans-serif; opacity: 0.9; }
     .o-pt .nm i { width: 16px; height: 16px; border-radius: 50%; display: block; }
     .o-pt .pr { display: block; font-weight: 900; font-size: 46px; line-height: 1.25; }
     .o-pt .pr small { font-weight: 800; font-size: 30px; opacity: 0.85; }
@@ -110,6 +110,7 @@
 
     // price tags: watch-face keyframes measured on the original (source seconds): [time, cx, cy, r]
     const ts = (src) => +(src - SO).toFixed(3);
+    const ORDER = { d3: 0, gt: 1, kd: 2 }; // D3 leaves frame first, so it shows first
     const TRACK = {
       gt: [[86.9, 373, 875, 81], [87.4, 369, 875, 83], [87.9, 308, 868, 100], [88.4, 292, 859, 126], [88.9, 298, 794, 162]],
       d3: [[86.9, 583, 593, 75], [87.4, 580, 583, 76], [87.9, 560, 486, 89], [88.4, 638, 259, 105]],
@@ -121,7 +122,8 @@
       d3: ([, x, y, r]) => ({ x: x + r + 20, y, xPercent: 0, yPercent: -50 }),
       kd: ([, x, y, r]) => ({ x, y: y + r + 18, xPercent: -50, yPercent: 0 }),
     };
-    Object.entries(TRACK).forEach(([k, keys], n) => {
+    Object.entries(TRACK).forEach(([k, keys]) => {
+      const n = ORDER[k];
       const sel = `#o-p-${k}`;
       tl.set(sel, place[k](keys[0]), 0);
       keys.slice(1).forEach((kf, i) => {
