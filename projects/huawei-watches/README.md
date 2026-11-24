@@ -23,3 +23,11 @@ The client chose to keep the voiceover and the edit as recorded. `assets/full.mp
 picture re-encoded for frame-accurate seeking (`ffmpeg -i source.mov -c:v libx264 -crf 16 -g 30 -c:a copy`);
 the audio stream is copied bit-for-bit. `tools/fullcut.py` maps the scenes (authored on the trimmed edit) onto
 the original timing. `tools/trim.py` / `tools/reopen.py` are the earlier, re-timed variants and are no longer used.
+
+## Name fix + prices
+
+- `tools/fix_name.py` swaps the spoken product name (original 15.10–18.75 s) for the re-recorded take
+  `assets/vo/name-fix.mov` («HUAWEI WATCH KIDS X1»), level-matched (−3.5 dB) and laid at 15.65 s as the gift
+  box comes on screen; the rest of the span is filled with the room's own tone. Output: `assets/full2.mp4`.
+- Prices (SAR): HUAWEI WATCH GT 7 Series from 899 · HUAWEI WATCH D3 1,599 · HUAWEI WATCH KIDS X1 from 899 —
+  tags ride each watch in the closing shot (hand-tracked keyframes in `compositions/outro.html`) and repeat on the end card.

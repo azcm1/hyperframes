@@ -15,7 +15,7 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); font-weight: 900; font-size: 56px; line-height: 1; opacity: 0;
     }
     .o-chip i { width: 26px; height: 26px; border-radius: 50%; display: block; }
-    .o-bottom { left: 0; right: 0; top: 1040px; text-align: center; }
+    .o-bottom { left: 0; right: 0; top: 1260px; text-align: center; }
     .o-pill {
       display: inline-block; max-width: 780px; padding: 26px 50px 30px; border-radius: 34px; background: rgba(14, 15, 20, 0.84);
       backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
@@ -24,13 +24,33 @@
     .o-pill .b { display: block; font-weight: 900; font-size: 58px; line-height: 1.25; }
     .o-pill .b em { font-style: normal; color: #ff2d55; }
     .o-end { inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(8, 8, 10, 0.72), rgba(8, 8, 10, 0.94)); }
-    .o-lock { left: 0; right: 0; top: 640px; text-align: center; }
+    .o-lock { left: 0; right: 0; top: 500px; text-align: center; }
     .o-word { display: block; direction: ltr; font: 900 150px/1 "Montserrat", sans-serif; letter-spacing: 16px; }
     .o-bar { display: block; margin: 34px auto 30px; height: 10px; width: 300px; border-radius: 6px; background: var(--red); }
     .lt { display: inline-block; }
+    /* price tags that ride on each watch */
+    .o-pt {
+      position: absolute; left: 0; top: 0; opacity: 0; padding: 14px 24px 16px; border-radius: 22px; white-space: nowrap;
+      background: rgba(14, 15, 20, 0.86); backdrop-filter: blur(20px); border: 1.5px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); text-align: center;
+    }
+    .o-pt .nm { display: flex; align-items: center; justify-content: center; gap: 10px; direction: ltr; font: 700 26px/1.2 "Montserrat", sans-serif; opacity: 0.9; }
+    .o-pt .nm i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+    .o-pt .pr { display: block; font-weight: 900; font-size: 46px; line-height: 1.25; }
+    .o-pt .pr small { font-weight: 800; font-size: 30px; opacity: 0.85; }
+    /* end-card price list */
+    .o-prices { display: inline-flex; flex-direction: column; gap: 14px; margin-top: 40px; }
+    .o-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 14px 30px; border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(255, 255, 255, 0.12); opacity: 0;
+    }
+    .o-row .nm { display: flex; align-items: center; gap: 12px; direction: ltr; font: 700 30px "Montserrat", sans-serif; }
+    .o-row .nm i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+    .o-row .pr { font-weight: 900; font-size: 40px; }
+    .o-row .pr small { font-weight: 800; font-size: 28px; opacity: 0.8; }
     .o-line { display: block; font-weight: 800; font-size: 60px; }
     .o-cta {
-      display: inline-block; margin-top: 54px; padding: 26px 64px 30px; border-radius: 999px; background: var(--red);
+      display: inline-block; margin-top: 44px; padding: 26px 64px 30px; border-radius: 999px; background: var(--red);
       font-weight: 900; font-size: 62px; box-shadow: 0 20px 60px rgba(228, 0, 43, 0.5);
     }
   </style>
@@ -49,12 +69,23 @@
       </div>
     </div>
 
+    <!-- prices, riding on each watch (tracked by hand through the camera move) -->
+    <div id="o-p-gt" class="o-pt"><span class="nm"><i style="background: var(--green)"></i>HUAWEI WATCH GT 7 Series</span><span class="pr"><small>يبدأ من</small> 899 <small>ريال</small></span></div>
+    <div id="o-p-d3" class="o-pt"><span class="nm"><i style="background: var(--gold)"></i>HUAWEI WATCH D3</span><span class="pr">1,599 <small>ريال</small></span></div>
+    <div id="o-p-kd" class="o-pt"><span class="nm"><i style="background: var(--blue)"></i>HUAWEI WATCH KIDS X1</span><span class="pr"><small>يبدأ من</small> 899 <small>ريال</small></span></div>
+
     <!-- end card -->
     <div id="o-end" class="o-abs o-end"></div>
     <div id="o-lock" class="o-abs o-lock">
       <span id="o-word" class="o-word"><span class="lt">H</span><span class="lt">U</span><span class="lt">A</span><span class="lt">W</span><span class="lt">E</span><span class="lt">I</span></span>
       <span id="o-bar" class="o-bar"></span>
       <span id="o-line" class="o-line">الهدية المثالية لكل جيل</span>
+      <span class="o-prices">
+        <span id="o-r1" class="o-row"><span class="nm"><i style="background: var(--green)"></i>HUAWEI WATCH GT 7 Series</span><span class="pr"><small>يبدأ من</small> 899 <small>ريال</small></span></span>
+        <span id="o-r2" class="o-row"><span class="nm"><i style="background: var(--gold)"></i>HUAWEI WATCH D3</span><span class="pr">1,599 <small>ريال</small></span></span>
+        <span id="o-r3" class="o-row"><span class="nm"><i style="background: var(--blue)"></i>HUAWEI WATCH KIDS X1</span><span class="pr"><small>يبدأ من</small> 899 <small>ريال</small></span></span>
+      </span>
+      <br />
       <span id="o-cta" class="o-cta">لا تفوتون العروض</span>
     </div>
   </div>
@@ -77,13 +108,46 @@
     ["#o-c1", "#o-c2", "#o-c3", "#o-c4"].forEach((s) => outt(s, 83.1));
     outt("#o-head", 85.55);
 
+    // price tags: watch-face keyframes measured on the original (source seconds): [time, cx, cy, r]
+    const ts = (src) => +(src - SO).toFixed(3);
+    const TRACK = {
+      gt: [[86.9, 373, 875, 81], [87.4, 369, 875, 83], [87.9, 308, 868, 100], [88.4, 292, 859, 126], [88.9, 298, 794, 162]],
+      d3: [[86.9, 583, 593, 75], [87.4, 580, 583, 76], [87.9, 560, 486, 89], [88.4, 638, 259, 105]],
+      kd: [[86.9, 664, 930, 80], [87.4, 654, 940, 80], [87.9, 680, 933, 94], [88.4, 739, 914, 113], [88.9, 833, 859, 146]],
+    };
+    // where each tag sits relative to its face: GT 7 above, D3 to the right, KIDS below
+    const place = {
+      gt: ([, x, y, r]) => ({ x, y: y - r - 18, xPercent: -50, yPercent: -100 }),
+      d3: ([, x, y, r]) => ({ x: x + r + 20, y, xPercent: 0, yPercent: -50 }),
+      kd: ([, x, y, r]) => ({ x, y: y + r + 18, xPercent: -50, yPercent: 0 }),
+    };
+    Object.entries(TRACK).forEach(([k, keys], n) => {
+      const sel = `#o-p-${k}`;
+      tl.set(sel, place[k](keys[0]), 0);
+      keys.slice(1).forEach((kf, i) => {
+        const prev = keys[i];
+        const { xPercent, yPercent, ...to } = place[k](kf);
+        tl.to(sel, { ...to, duration: kf[0] - prev[0], ease: "none" }, ts(prev[0]));
+      });
+      tl.fromTo(sel, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, ts(86.95 + n * 0.2));
+    });
+    tl.to("#o-p-d3", { opacity: 0, duration: 0.2 }, ts(88.2));
+    tl.set("#o-p-d3", { opacity: 0 }, ts(88.4));
+    ["#o-p-gt", "#o-p-kd"].forEach((s) => {
+      tl.to(s, { opacity: 0, duration: 0.2 }, ts(88.95));
+      tl.set(s, { opacity: 0 }, ts(89.15));
+    });
+
     tl.fromTo("#o-end", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, t(85.3));
     tl.fromTo("#o-lock", { opacity: 0 }, { opacity: 1, duration: 0.01 }, t(85.55));
     tl.fromTo("#o-word", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t(85.55));
     tl.fromTo("#o-word .lt", { x: (i) => (i - 2.5) * 50 }, { x: 0, duration: 0.8, ease: "power4.out" }, t(85.55));
     tl.fromTo("#o-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, t(85.9));
     tl.fromTo("#o-line", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t(86.0));
-    tl.fromTo("#o-cta", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, t(86.3));
+    ["#o-r1", "#o-r2", "#o-r3"].forEach((s, i) => {
+      tl.fromTo(s, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t(86.1) + i * 0.15);
+    });
+    tl.fromTo("#o-cta", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }, t(86.55));
     tl.to("#o-cta", { scale: 1.05, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, t(87.6));
 
     window.__timelines["outro"] = tl;
